@@ -18,7 +18,6 @@ public class UsersController {
         this.userService = userService;
     }
 
-    //ПРОСМОТР
     @GetMapping(value = "/posts")
     //@GetMapping
     public String getUsers(ModelMap model) {
@@ -26,15 +25,6 @@ public class UsersController {
         return "users";
     }
 
-    //@GetMapping()
-    @GetMapping("/{id}")
-    //public String show(@RequestParam(name = "id", required = false) Long id, ModelMap model) {
-    public String show(@PathVariable("id") long id, Model model) {
-        model.addAttribute("user", userService.show(id));
-        return "show";
-    }
-
-    //СОЗАДНИЕ НОВОГО USER'а
     @GetMapping("/new")
     public String newUser(Model model) {
         model.addAttribute("user", new User());
@@ -47,25 +37,21 @@ public class UsersController {
         return "redirect:/posts";
     }
 
-    //РЕДАКТИРОВАНИЕ USER'a
-
-    @GetMapping("/{id}/edit")
-    public String edit(Model model, @PathVariable("id") int id) {
+    @GetMapping("/edit")
+    public String edit(Model model, @RequestParam long id) {
         model.addAttribute("user", userService.show(id));
         return "edit";
     }
 
-    @PatchMapping("/{id}")
-    public String update(@ModelAttribute("user") User user, @PathVariable("id") long id) {
+    @PostMapping("/posts")
+    public String update(@ModelAttribute("user") User user, @RequestParam long id) {
         userService.updateUser(id, user);
         return "redirect:/posts";
     }
 
-    //УДАЛЕНИЕ USER'a
-	@DeleteMapping("/users/{id}")
-	public String delete(@PathVariable("id") long id) {
-		userService.delUser(id);
-		return "redirect:/posts";
-	}
-
+    @PostMapping("/users/delete")
+    public String delete(@RequestParam long id) {
+        userService.delUser(id);
+        return "redirect:/posts";
+    }
 }
