@@ -18,27 +18,27 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
-    public List<User> outputUsers() {
-        return userDao.outputUsers();
+    public List<User> findAll() {
+        return userDao.findAll();
     }
 
     @Override
-    public User outputUser(long id) {
-        return userDao.outputUser(id);
+    public User findOne(long id) {
+        return userDao.findOne(id);
     }
 
     @Override
-    public void createUser(User user) {
-        userDao.createUser(user);
+    public void save(User user) {
+        userDao.save(user);
     }
 
     @Override
-    public void deleteUser(long id) {
-        userDao.deleteUser(id);
+    public void delete(long id) {
+        userDao.delete(id);
     }
 
     @Override
-    public void editUser(long id, User user) {
-        userDao.editUser(id, user);
+    public void update(long id, User user) {
+        userDao.update(id, user);
     }
 }

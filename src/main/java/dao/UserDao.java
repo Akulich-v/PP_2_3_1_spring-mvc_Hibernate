@@ -6,14 +6,14 @@ import org.springframework.context.annotation.Bean;
 import java.util.List;
 
 public interface UserDao {
-    List<User> outputUsers();
+    List<User> findAll();
 
-    User outputUser(long id);
+    User findOne(long id);
 
-    void createUser(User user);
+    void save(User user);
 
-    void deleteUser(long id);
+    void delete(long id);
 
-    void editUser(long id, User user);
+    void update(long id, User user);
 
 }
