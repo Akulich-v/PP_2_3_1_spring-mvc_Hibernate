@@ -28,12 +28,12 @@
                 <a th:href="@{/edit(id=${user.id})}">Edit</a>
             </td>
             <td>
-            <form th:action="@{/users/delete}" method="post">
-            <input type="hidden" name="id" th:value="${user.getId()}"/>
-            <button type="submit">Delete</button>
-            </form>
+                <form th:action="@{/users/delete}" method="post">
+                    <input type="hidden" name="id" th:value="${user.getId()}"/>
+                    <button type="submit">Delete</button>
+                </form>
             </td>
-            </tr>
+        </tr>
     </table>
 
 
