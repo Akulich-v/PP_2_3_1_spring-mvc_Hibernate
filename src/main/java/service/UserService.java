@@ -5,13 +5,13 @@ import model.User;
 import java.util.List;
 
 public interface UserService {
-    List<User> index();
+    List<User> outputUsers();
 
-    User show(long id);
+    User outputUser(long id);
 
-    void save(User user);
+    void createUser(User user);
 
-    void delUser(long id);
+    void deleteUser(long id);
 
-    void updateUser(long id, User user);
+    void editUser(long id, User user);
 }

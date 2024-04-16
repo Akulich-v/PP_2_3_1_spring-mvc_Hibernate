@@ -16,26 +16,26 @@ public class UserDaoImp implements UserDao {
     private EntityManager entityManager;
 
     @Override
-    public List<User> index() {
+    public List<User> outputUsers() {
         TypedQuery<User> query = entityManager.createQuery("from User", User.class);
         return query.getResultList();
     }
 
     @Override
-    public User show(long id) {
+    public User outputUser(long id) {
         return entityManager.find(User.class, id);
     }
 
     @Transactional
     @Override
-    public void save(User user) {
+    public void createUser(User user) {
         entityManager.persist(user);
     }
 
 
     @Transactional
     @Override
-    public void delUser(long id) {
+    public void deleteUser(long id) {
         User user = entityManager.find(User.class, id);
         if (user != null) {
             entityManager.remove(user);
@@ -44,8 +44,8 @@ public class UserDaoImp implements UserDao {
 
     @Transactional
     @Override
-    public void updateUser(long id, User updatedUser) {
-        User userToBeUpdated = show(id);
+    public void editUser(long id, User updatedUser) {
+        User userToBeUpdated = outputUser(id);
         userToBeUpdated.setFirstName(updatedUser.getFirstName());
         userToBeUpdated.setLastName(updatedUser.getLastName());
         userToBeUpdated.setEmail(updatedUser.getEmail());
