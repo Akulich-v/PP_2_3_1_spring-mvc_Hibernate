@@ -25,7 +25,7 @@ public class UsersController {
     }
 
     @GetMapping("/new")
-    public String newUser(Model model) {
+    public String viewCreateForm(Model model) {
         model.addAttribute("user", new User());
         return "new";
     }
