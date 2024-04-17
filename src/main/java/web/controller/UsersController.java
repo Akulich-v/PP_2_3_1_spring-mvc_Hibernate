@@ -19,14 +19,13 @@ public class UsersController {
     }
 
     @GetMapping(value = "/posts")
-    //@GetMapping
     public String findAll(ModelMap model) {
         model.addAttribute("users", userService.findAll());
         return "users";
     }
 
     @GetMapping("/new")
-    public String create(Model model) {
+    public String newUser(Model model) {
         model.addAttribute("user", new User());
         return "new";
     }
